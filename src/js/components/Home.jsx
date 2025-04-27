@@ -1,28 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import CounterDisplay from "./CounterDisplay";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
-//create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+    const [counter, setCounter] = useState(0);
+
+    const updateCounter = () => {
+        setCounter(prevCounter => prevCounter+1)
+    }
+
+    useEffect( () => {
+        const interval = setInterval(updateCounter,1000)
+        return () => clearInterval(interval);
+    }, [] )
+    
+    return (
+        <CounterDisplay counter= {counter}/>
+    );
+
 };
 
 export default Home;
