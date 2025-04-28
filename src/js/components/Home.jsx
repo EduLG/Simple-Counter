@@ -5,13 +5,13 @@ import CounterDisplay from "./CounterDisplay";
 const Home = () => {
 
     const [counter, setCounter] = useState(0);
-
+    const updateCounter =() => {
+        setCounter(counter +1)
+    }
     useEffect( () => {
-        const interval = setInterval(() => {
-            setCounter(prevCounter => prevCounter +1)
-        },1000)
-        return () => clearInterval(interval);
-    }, [] )
+        setTimeout(updateCounter,1000)
+      
+    }, [counter] )
     
     return (
         <CounterDisplay counter= {counter}/>
