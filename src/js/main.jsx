@@ -10,12 +10,14 @@ import '../styles/index.css'
 
 // components
 import CounterDisplay from './components/CounterDisplay';
-import Home from './components/Home';
 
+let count = 0;
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+setInterval(() => {
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+      <CounterDisplay counter={count} />
+    </React.StrictMode>,
+  )
+  count++
+}, 1000)
